@@ -1,0 +1,21 @@
+---
+title: "04 Classwork"
+author: "Madeleine Augostini"
+date: "5/24/2021"
+output: word_document
+---
+
+```{r}
+library(tidyverse)     
+library(dplyr)
+library(ggplot2)
+```
+
+
+Create an Rmarkdown file that shows the ggplot coding needed to create a scatterplot for x = carat and y = price from the diamonds data table. 
+```{r}
+ggplot(data = diamonds) +
+  geom_point(mapping = aes(x = carat, y = price)) 
+```
+
+Using the coding sequence illustrated in class push this Rmarkdown file from your computer through the bash terminal into Github.  For this exercise, email me the url for your GitHub Repository that will indicate a successful push to GitHub.
