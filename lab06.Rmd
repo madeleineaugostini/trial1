@@ -1,6 +1,0 @@
----
-title: "lab06"
-author: "Madeleine Augostini & Andrew Stewart"
-date: "6/4/2021"
-output: word_document
----
