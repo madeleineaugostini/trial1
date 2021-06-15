@@ -1,0 +1,55 @@
+---
+title: "Rectangling_Lab"
+author: "Madeleine Augostini"
+date: "6/14/2021"
+output: word_document
+---
+
+```{r}
+library(rvest)    
+library(repurrrsive)
+library(dplyr)     
+library(tidyverse)     
+
+#listviewer::jsonedit(gh_users) #commented out to reduce output
+```
+
+
+1.) 
+
+a. Explain or describe nested Lists
+A nested list is when there is a list within a list. A list is a vector with objects of different types, e.g., integer, character, etc., but this also includes when one or more elements are other lists. It can be difficult to read and interpret data in a nested list and we often will unnest a list before manipulating it.
+
+
+b.
+```{r}
+#gh_repos #commented out to reduce output
+```
+At first glance, this data is very messy and difficult to interpret. Much of the information appears to be nested, perhaps more than one layer (a list within a list within another list), and some of the data appears to be api URLs for various information.
+ 
+ c.
+```{r}
+#repos <- tibble(repo = gh_repos)
+#repos
+```
+ 
+This format now shows us the main list consists of six other lists. Each of the six lists contain either 26 or 30 elements, however at this point, we are not able to see what the lists contain.
+
+
+d.
+```{r}
+#listviewer::jsonedit(gh_repos)
+```
+
+
+Using the listserver tool allows us to expand/collapse each to the lists. We can see the lists are nested even further, and when expanded all the way, we are able to see the contents of the objects. The first nested list contains 30 other lists, each which contain 68 objects. When we open these lists, we can see that the 68 objects include information such as userID, descriptions, api urls, and other identifying information/repositorites. The objects contain information regarding one user. This is an especially useful way to view the data as a whole since it is interactive and fits on one page. We can use this information to help come up with a method for further manipulating the data later.
+
+
+e.
+```{r}
+tibble(repo = gh_repos)%>%
+  unnest_auto(repo)%>%
+  unnest_auto(repo) -> new
+new
+```
+
